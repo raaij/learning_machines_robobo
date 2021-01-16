@@ -1,10 +1,8 @@
-"""A setuptools based setup module.
-See:
-https://packaging.python.org/guides/distributing-packages-using-setuptools/
-https://github.com/pypa/sampleproject
+"""
+TODO:
+    - Put robobo, prey and vrep packages in a namespace learning_machines_robobo
 """
 
-# Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 import pathlib
 
@@ -24,6 +22,6 @@ setup(
     python_requires='>=3.6, <4',
     install_requires=['numpy', 'opencv-python'],
     package_data={  # Optional
-        'learning_machines_robobo': ['vrep/*.dll', 'vrep/*.so', 'vrep/*.dylib'],
+        'learning_machines_robobo': ['vrep/remoteApi.*'],
     },
 )
