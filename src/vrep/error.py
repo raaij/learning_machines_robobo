@@ -4,12 +4,14 @@ from . import *
 class VrepApiError(Exception):
     def __init__(self, ret_code):
         self.ret_code = ret_code
-        
+
         if ret_code == simx_return_ok:
             raise ValueError("Invalid VrepApiError error code")
         elif ret_code == simx_return_novalue_flag:  # 1
-            message = "There is no command reply in the input buffer. This should not always be considered as an " \
-                      "error, depending on the selected operation mode "
+            message = (
+                "There is no command reply in the input buffer. This should not always be considered as an "
+                "error, depending on the selected operation mode "
+            )
         elif ret_code == simx_return_timeout_flag:  # 2
             message = "The function timed out (probably the network is down or too slow)"
         elif ret_code == simx_return_illegal_opmode_flag:  # 4
@@ -35,8 +37,7 @@ def unwrap_vrep(result, ignore_novalue_error=False):
         if len(result) == 1:
             result = result[0]
 
-        if ret_code > 0 and \
-            not(ignore_novalue_error and ret_code == simx_return_novalue_flag):
-                raise VrepApiError(ret_code)
+        if ret_code > 0 and not (ignore_novalue_error and ret_code == simx_return_novalue_flag):
+            raise VrepApiError(ret_code)
 
         return result

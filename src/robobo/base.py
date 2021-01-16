@@ -1,5 +1,13 @@
-from __future__ import unicode_literals, print_function, absolute_import, division, generators, nested_scopes
+from __future__ import (
+    unicode_literals,
+    print_function,
+    absolute_import,
+    division,
+    generators,
+    nested_scopes,
+)
 import time
+
 
 class Robobo(object):
     def __init__(self):
@@ -16,13 +24,13 @@ class Robobo(object):
 
     def move(self, left, right, millis):
         raise NotImplementedError("Not implemented")
-    
+
     def talk(self, message):
         raise NotImplementedError("Not implemented")
 
     def set_led(self, selector, color):
         raise NotImplementedError("Not implemented")
-    
+
     def read_irs(self):
         raise NotImplementedError("Not implemented")
 

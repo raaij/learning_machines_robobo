@@ -22,6 +22,7 @@ setup(
     python_requires='>=3.6, <4',
     install_requires=['numpy', 'opencv-python'],
     package_data={
-        'learning_machines_robobo': ['src/vrep/remoteApi.*'],
-    },
+        # If any package contains *.txt or *.rst files, include them:
+        "": ["*.dll", "*.dylib", "*.so"],
+    }
 )

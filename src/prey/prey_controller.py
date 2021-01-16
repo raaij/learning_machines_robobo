@@ -4,7 +4,7 @@ import threading
 
 class StoppableThread(threading.Thread):
     """Thread class with a stop() method. The thread itself has to check
-        regularly for the stopped() condition."""
+    regularly for the stopped() condition."""
 
     def __init__(self):
         super(StoppableThread, self).__init__()
@@ -37,7 +37,12 @@ class Prey(StoppableThread):
         old_max = 0.20
         new_min = 20000
         new_max = 0
-        return [0 if value is False else (((value - old_min) * (new_max - new_min)) / (old_max - old_min)) + new_min for value in sensors_values]
+        return [
+            0
+            if value is False
+            else (((value - old_min) * (new_max - new_min)) / (old_max - old_min)) + new_min
+            for value in sensors_values
+        ]
 
     def run(self):
         """
@@ -83,7 +88,9 @@ class Prey(StoppableThread):
             epsilon = 0.08
         elif self._level == 4:
             if self._log is not None:
-                self._log.info("Level {} selected -> insane (Good luck Catching Me)".format(self._level))
+                self._log.info(
+                    "Level {} selected -> insane (Good luck Catching Me)".format(self._level)
+                )
             else:
                 print("Level {} selected -> insane (Good luck Catching Me)".format(self._level))
             maximum_speed = 70.0
