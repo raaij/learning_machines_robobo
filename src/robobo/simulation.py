@@ -5,15 +5,21 @@ import vrep
 import cv2
 import numpy as np
 
+from util import get_ip_address
+
+VREP_DEFAULT_PORT = 19997
+
+
 class VREPCommunicationError(Exception):
     pass
+
 
 class SimulationRobobo(Robobo):
     def __init__(self, number=""):
         self._clientID = None
         self._value_number = number
 
-    def connect(self, address='127.0.0.1', port=19999):
+    def connect(self, address=get_ip_address(), port=VREP_DEFAULT_PORT):
         # vrep.simxFinish(-1)  # just in case, close all opened connections
         self._clientID = vrep.simxStart(address, port, True, True, 5000, 5)  # Connect to V-REP
         if self._clientID >= 0: #  and clientID_0 != -1:
